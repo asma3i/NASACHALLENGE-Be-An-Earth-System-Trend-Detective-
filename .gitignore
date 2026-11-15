@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+# raw NASA files stay on the team's Drive
+OMI_Data/
+*.nc
+*.he5
+*.hdf
+*.zip

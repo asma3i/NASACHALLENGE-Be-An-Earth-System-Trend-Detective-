@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOORAtmosphere — Open the DOOR to Earth's Atmosphere</title>
+<meta name="description" content="DOORAtmosphere: interactive exploration of Earth's atmosphere and of Morocco's atmospheric trends from NASA satellite data.">
+<link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("doorTheme")||(matchMedia("(prefers-color-scheme: light)").matches?"day":"night")}catch(e){document.documentElement.dataset.theme="night"}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="ciel" aria-hidden="true"></canvas>
+
+<!-- ===================== Opening animation ===================== -->
+<div id="intro" class="intro" role="dialog" aria-label="DOORAtmosphere opening animation">
+  <canvas id="intro-stars" aria-hidden="true"></canvas>
+  <div class="intro-scene">
+    <div class="intro-earth" aria-hidden="true">
+      <div class="earth-sphere"><div class="earth-clouds"></div></div>
+      <div class="earth-glow"></div>
+    </div>
+    <div class="door" aria-hidden="true">
+      <div class="door-frame"></div>
+      <div class="door-panel left"><span class="door-line"></span></div>
+      <div class="door-panel right"><span class="door-line"></span></div>
+      <div class="door-light"></div>
+    </div>
+    <div class="intro-brand">
+      <img class="intro-logo" src="assets/logo.svg" alt="DOORAtmosphere logo">
+      <div class="logo-big"><span class="logo-door">DOOR</span>Atmosphere</div>
+      <p class="intro-slogan">Open the DOOR to Earth's Atmosphere.</p>
+      <p class="intro-tag">Discover · Observe · Reveal</p>
+    </div>
+  </div>
+  <div class="intro-controls">
+    <button id="intro-enter" class="btn btn-primary">Enter</button>
+    <button id="intro-skip" class="btn btn-ghost">Skip</button>
+    <button id="intro-sound" class="btn btn-ghost btn-icon" aria-pressed="false" title="Sound on/off">♪ <span>off</span></button>
+  </div>
+</div>
+
+<!-- ===================== Header ===================== -->
+<header class="topbar">
+  <a href="#/" class="brand" aria-label="DOORAtmosphere home">
+    <img src="assets/logo.svg" alt="">
+    <span class="brand-word"><b>DOOR</b>Atmosphere</span>
+  </a>
+  <nav id="nav" class="nav" aria-label="Main navigation">
+    <a href="#/" data-route="home">Home</a>
+    <a href="#/earth" data-route="earth">Earth Explorer</a>
+    <a href="#/variables" data-route="variables">Variables</a>
+    <a href="#/trends" data-route="trends">Trend Detective</a>
+    <a href="#/maroc" data-route="maroc">Morocco</a>
+    <a href="#/global" data-route="global">Global Comparison</a>
+    <a href="#/methodology" data-route="methodology">Methodology</a>
+    <a href="#/about" data-route="about">About</a>
+  </nav>
+  <div class="search" role="search">
+    <input id="search-input" type="search" placeholder="Search: methane, Morocco, anomalies…  ( / )" autocomplete="off" aria-label="Search DOORAtmosphere" aria-controls="search-results" aria-expanded="false">
+    <div id="search-results" class="search-results" role="listbox" hidden></div>
+  </div>
+  <button id="theme-toggle" class="btn btn-ghost btn-icon theme-toggle" aria-label="Day / night mode" aria-pressed="false"><span>☾</span></button>
+  <button id="replay-intro" class="btn btn-ghost btn-icon" title="Replay the opening animation" aria-label="Replay the opening animation">⟲</button>
+  <button id="menu-toggle" class="btn btn-ghost btn-icon menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
+</header>
+
+<main id="vue" tabindex="-1"></main>
+
+<footer class="footer">
+  <div><b>DOOR</b>Atmosphere — <i>Discover. Observe. Reveal.</i></div>
+  <div>Data: NASA Earthdata (Aura OMI, Aura MLS, GPM IMERG, Terra MODIS, MERRA-2) · Borders: Natural Earth · Charts: Plotly.js · Fonts: Space Grotesk, IBM Plex (OFL)</div>
+  <div>Team AerO-Club: Aya LACHKAR · Abderazzak ASMAY · Naouar EL KENDI · Said OUKAAI · Asmae EL GHAZI · Omar BENRAQQOUCH</div>
+  <div>NASA Space Apps Challenge 2026 — Be An Earth System Trend Detective</div>
+</footer>
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-label="Image viewer">
+  <button class="btn btn-ghost btn-icon lightbox-close" aria-label="Close">✕</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+</div>
+
+<!-- libraries (local copies: the site works offline and from file://) -->
+<script src="vendor/plotly.min.js"></script>
+<script src="vendor/world_110m.js"></script>
+<!-- static data -->
+<script src="data/geo.js"></script>
+<script src="data/galerie.js"></script>
+<!-- application -->
+<script src="js/ciel.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/anim.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/search.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/vues.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
